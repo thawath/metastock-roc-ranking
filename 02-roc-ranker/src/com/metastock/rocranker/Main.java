@@ -41,7 +41,7 @@ public class Main {
 		// 1. Load DR symbol list
 		DrListLoader listLoader = new DrListLoader();
 		List<String> symbols = listLoader.load(drListFile);
-		System.out.println("Loaded " + symbols.size() + " DR symbols: " + symbols);
+		System.out.println("Loaded " + symbols.size()+" DR symbols");// + symbols);
 
 		// 2. Init MetaStock reader (wide start date to capture full history)
 		LocalDate startDate = LocalDate.of(2000, 1, 1);

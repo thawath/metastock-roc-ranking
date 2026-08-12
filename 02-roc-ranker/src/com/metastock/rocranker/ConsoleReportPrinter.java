@@ -12,10 +12,11 @@ import java.util.Locale;
 public class ConsoleReportPrinter {
 
 	private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	private static final int COL_WIDTH = 8;
+	private static final int COL_WIDTH = 12;
 
 	private static final String[] HEADERS = { "No", "Month", "Symbol", "BeginYrDt", "BeginYrPx", "YTD%", "FwdROC%",
-			"NextMoPx", "BeginMoPx", "LastPx" };
+			"LastPx" };
+			//"NextMoPx", "BeginMoPx", "LastPx" };
 
 	public void printLatestMonth(List<RocReportRow> allRows) {
 		if (allRows == null || allRows.isEmpty()) {
@@ -37,8 +38,8 @@ public class ConsoleReportPrinter {
 					r.getBeginOfYearDate().format(DATE_FMT), NumberFormatUtil.formatPrice(r.getBeginOfYearPrice()),
 					NumberFormatUtil.formatPercent(r.getYtdPercent()),
 					NumberFormatUtil.formatPercent(r.getForwardMonthRocPercent()),
-					NumberFormatUtil.formatPrice(r.getNextBeginOfMonthPrice()),
-					NumberFormatUtil.formatPrice(r.getBeginOfMonthPrice()),
+					//NumberFormatUtil.formatPrice(r.getNextBeginOfMonthPrice()),
+					//NumberFormatUtil.formatPrice(r.getBeginOfMonthPrice()),
 					NumberFormatUtil.formatPrice(r.getLatestPrice()) });
 		}
 	}

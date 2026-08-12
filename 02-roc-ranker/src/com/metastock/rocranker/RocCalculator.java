@@ -62,8 +62,8 @@ public class RocCalculator {
 	 */
 	public PricePoint findBeginOfYear(List<StockRecord> data, int year) {
 		for (StockRecord r : data) {
-			if(r.getSymbol().equals("ADVANT19"))
-				System.out.println("[" + java.time.LocalTime.now().format(TF) + "] symbol = " + r.getSymbol()+" date="+r.getDate()+" year="+year);
+			//if(r.getSymbol().equals("ADVANT19"))
+			//	System.out.println("[" + java.time.LocalTime.now().format(TF) + "] symbol = " + r.getSymbol()+" date="+r.getDate()+" year="+year);
 			if (r.getDate().getYear() == year) {
 				return new PricePoint(r.getDate(), r.getClose());
 			}

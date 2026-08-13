@@ -5,15 +5,13 @@ import java.util.List;
 
 /**
  * 02-roc-ranker
- *
  * Workflow:
  *  1. Load DR symbol list from a comma-separated text file (drafl.txt).
  *  2. Read each symbol's full daily price history from the MetaStock database.
- *  3. Compute YTD ROC (per month, Jan..current) and Forward-Month ROC.
+ *  3. Compute YTD ROC (per month, January to current) and Forward-Month ROC.
  *  4. Sort by YTD% descending, keep Top 10 per month.
  *  5. Write the full report to DRYTD.csv and print the latest month's Top 10
  *     to the console, nicely column-aligned.
- *
  * Usage:
  *   java -jar roc-ranker.jar [metaStockDir] [drListFile] [outputCsv]
  * All three arguments are optional; defaults below are used if omitted.
@@ -26,7 +24,6 @@ public class Main {
 	private static final String DEFAULT_OUTPUT_CSV = "C:\\meta\\dr\\report\\DRYTD.csv";
 	private static final String REFERENCE_SYMBOL = "GOOG80"; // longest continuous history -> trading calendar
 	private static final int TOP_N = 10;
-	private static final java.time.format.DateTimeFormatter TF = java.time.format.DateTimeFormatter.ofPattern("HH:mm:ss");
 
 	public static void main(String[] args) throws Exception {
 		String metaStockDir = args.length > 0 ? args[0] : DEFAULT_METASTOCK_DIR;

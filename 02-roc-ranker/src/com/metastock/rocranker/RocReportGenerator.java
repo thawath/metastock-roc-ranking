@@ -113,6 +113,7 @@ public class RocReportGenerator {
 				row.setNextBeginOfMonthPrice(nextPrice);
 				row.setBeginOfMonthPrice(bom.close);
 				row.setLatestPrice(latestRec.getClose());
+				row.setLatestDate(latestRec.getDate());
 				monthRows.add(row);
 			}
 

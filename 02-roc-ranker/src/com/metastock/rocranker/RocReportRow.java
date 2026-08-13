@@ -19,6 +19,7 @@ public class RocReportRow {
 	private double nextBeginOfMonthPrice;
 	private double beginOfMonthPrice;
 	private double latestPrice;
+	private LocalDate latestDate;
 
 	public int getNo() {
 		return no;
@@ -99,4 +100,12 @@ public class RocReportRow {
 	public void setLatestPrice(double latestPrice) {
 		this.latestPrice = latestPrice;
 	}
+
+    public LocalDate getLatestDate() {
+        return latestDate;
+    }
+
+    public void setLatestDate(LocalDate latestDate) {
+        this.latestDate = latestDate;
+    }
 }

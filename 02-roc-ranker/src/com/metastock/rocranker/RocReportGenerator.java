@@ -41,7 +41,7 @@ public class RocReportGenerator {
 			throw new IllegalStateException(
 					"No data found for reference symbol '" + referenceSymbol + "'. Check MASTER/XMASTER loading.");
 		}
-		LocalDate refLatestDate = refData.get(refData.size() - 1).getDate();
+		LocalDate refLatestDate = refData.getLast().getDate();
 		int year = refLatestDate.getYear();
 		int lastMonthNum = refLatestDate.getMonthValue();
 

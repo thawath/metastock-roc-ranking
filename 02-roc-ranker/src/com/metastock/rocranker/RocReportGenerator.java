@@ -28,7 +28,6 @@ public class RocReportGenerator {
 	private final RocCalculator calculator = new RocCalculator();
 	private final String referenceSymbol;
 	private final int topN;
-	private static final java.time.format.DateTimeFormatter TF = java.time.format.DateTimeFormatter.ofPattern("HH:mm:ss");
 
 	public RocReportGenerator(MetaStock metaStock, String referenceSymbol, int topN) {
 		this.metaStock = metaStock;
@@ -62,17 +61,14 @@ public class RocReportGenerator {
 			RocCalculator.PricePoint boy = calculator.findBeginOfYear(data, year);
 			if (boy != null) {
 				beginOfYearBySymbol.put(symbol, boy);
-				//System.out.println("[" + java.time.LocalTime.now().format(TF) + "] symbol = " + symbol+", boy="+ boy.date+", price="+boy.close);
-			}else{
-				System.out.println("[" + java.time.LocalTime.now().format(TF) + "] symbol = " + symbol);
 			}
 		}
 
-
-
 		List<RocReportRow> allRows = new ArrayList<>();
 
-		for (int m = 1; m <= lastMonthNum; m++) {
+		// เริ่มคำนวณจากเดือนกุมภาพันธ์ (m=2) เพราะข้อมูล January (m=1) ให้ YTD% = 0 เสมอ
+		// (begin-of-month ของเดือนแรกก็คือ begin-of-year ตัวเดียวกัน จึงไม่มีความหมายให้แสดงใน report)
+		for (int m = 2; m <= lastMonthNum; m++) {
 			YearMonth ym = YearMonth.of(year, m);
 			List<RocReportRow> monthRows = new ArrayList<>();
 

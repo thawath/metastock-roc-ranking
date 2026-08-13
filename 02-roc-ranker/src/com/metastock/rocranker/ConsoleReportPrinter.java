@@ -14,8 +14,7 @@ public class ConsoleReportPrinter {
 	private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	private static final int COL_WIDTH = 12;
 
-	private static final String[] HEADERS = { "Symbol", "BeginYrDt", "BeginYrPx", "YTD%", "FwdROC%",
-			"LastPx" };
+	private static final String[] HEADERS = { "Symbol", "BeginYrDt", "BeginYrPx", "LastPx","YTD%", "FwdROC%"};
 			//"NextMoPx", "BeginMoPx", "LastPx" };
 
 	public void printLatestMonth(List<RocReportRow> allRows) {
@@ -36,11 +35,12 @@ public class ConsoleReportPrinter {
 		for (RocReportRow r : latest) {
 			printRow(String.valueOf(r.getNo()),new String[] { r.getSymbol(),
 					r.getBeginOfYearDate().format(DATE_FMT), NumberFormatUtil.formatPrice(r.getBeginOfYearPrice()),
+					NumberFormatUtil.formatPrice(r.getLatestPrice()),
 					NumberFormatUtil.formatPercent(r.getYtdPercent()),
-					NumberFormatUtil.formatPercent(r.getForwardMonthRocPercent()),
+					NumberFormatUtil.formatPercent(r.getForwardMonthRocPercent())
 					//NumberFormatUtil.formatPrice(r.getNextBeginOfMonthPrice()),
 					//NumberFormatUtil.formatPrice(r.getBeginOfMonthPrice()),
-					NumberFormatUtil.formatPrice(r.getLatestPrice()) });
+					});
 		}
 		System.out.println("Month:"+latest.getFirst().getMonth());
 		System.out.println("Date:"+latest.getFirst().getLatestDate().format(DATE_FMT));
